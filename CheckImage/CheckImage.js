@@ -23,12 +23,8 @@ function main() {
    var view = window.currentView;
    var img = view.image;
 
-   let z = img.zoomFactor;
    width = img.width / 5;
    height = img.height / 5;
-   console.writeln(z);
-   console.writeln(width);
-   console.writeln(height);
 
    var pv = new ImageWindow(width*3, height*3,
       img.numberOfChannels,
@@ -41,10 +37,8 @@ function main() {
    mv.beginProcess();
 
    let v1 = window.createPreview(0,0,width,height,"L1");
-   let i1 = v1.image;
-
    mv.image.selectedPoint = new Point(0,0);
-   mv.image.apply(i1);
+   mv.image.apply(v1.image);
    window.deletePreview(v1);
 
    let v2 = window.createPreview(width*2,0,width*2+width,height,"L2");
