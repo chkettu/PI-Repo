@@ -48,65 +48,49 @@ function main() {
    window.deletePreview(v1);
 
    let v2 = window.createPreview(width*2,0,width*2+width,height,"L2");
-   let i2 = v2.image;
-
    mv.image.selectedPoint = new Point(width,0);
-   mv.image.apply(i2);
+   mv.image.apply(v2.image);
    window.deletePreview(v2);
 
    let v3 = window.createPreview(width*4,0,width*4+width,height,"L3");
-   let i3 = v3.image;
-
    mv.image.selectedPoint = new Point(width*2,0);
-   mv.image.apply(i3);
+   mv.image.apply(v3.image);
    window.deletePreview(v3);
 
    let v4 = window.createPreview(0,height*2,width,height*2+height,"L4");
-   let i4 = v4.image;
-
    mv.image.selectedPoint = new Point(0,height);
-   mv.image.apply(i4);
+   mv.image.apply(v4.image);
    window.deletePreview(v4);
 
    let v5 = window.createPreview(width*2,height*2,width*2+width,height*2+height,"L5");
-   let i5 = v5.image;
 
    mv.image.selectedPoint = new Point(width,height);
-   mv.image.apply(i5);
+   mv.image.apply(v5.image);
    window.deletePreview(v5);
 
    let v6 = window.createPreview(width*4,height*2,width*4+width,height*2+height,"L6");
-   let i6 = v6.image;
-
    mv.image.selectedPoint = new Point(width*2,height);
-   mv.image.apply(i6);
+   mv.image.apply(v6.image);
    window.deletePreview(v6);
 
    let v7 = window.createPreview(0,height*4,width,height*4+height,"L7");
-   let i7 = v7.image;
-
    mv.image.selectedPoint = new Point(0,height*2);
-   mv.image.apply(i7);
+   mv.image.apply(v7.image);
    window.deletePreview(v7);
 
    let v8 = window.createPreview(width*2,height*4,width*2+width,height*4+height,"L8");
-   let i8 = v8.image;
-
    mv.image.selectedPoint = new Point(width,height*2);
-   mv.image.apply(i8);
+   mv.image.apply(v8.image);
    window.deletePreview(v8);
 
    let v9 = window.createPreview(width*4,height*4,width*4+width,height*4+height,"L9");
-   let i9 = v9.image;
-
    mv.image.selectedPoint = new Point(width*2,height*2);
-   mv.image.apply(i9);
+   mv.image.apply(v9.image);
    window.deletePreview(v9);
 
    mv.endProcess();
 
    pv.show();
-
 }
 
 main();
