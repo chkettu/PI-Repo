@@ -6,7 +6,7 @@ Script to visually check image quality. A 3x3 preview crop will be created.
 
 * open image
 
-![M31 full](img/M31_full.jpg "Example M31 full")
+![M31 full](img/M31_full.JPG "Example M31 full")
 
 * execute script Devgroup/Checkimage
 
