@@ -1,7 +1,13 @@
-#feature-id    CheckImage : Utilities > CheckImage
+/**
+   Check Image
+   
+   (c) 2022 by Christian Liska
+*/
+#feature-id    CheckImage : Devgroup > CheckImage
 
-#define TITLE "Check Image"
+#define TITLE "Check Image by CL"
 #define VERSION "1.0.0"
+#define ID "CHKIMG"
 
 #include <pjsr/ColorSpace.jsh>
 #include <pjsr/SampleType.jsh>
@@ -12,9 +18,10 @@ function main() {
    var height;
 
    var window = ImageWindow.activeWindow;
+   if ( window.isNull ) throw new Error( "No active image" );
+
    var view = window.currentView;
    var img = view.image;
-   //if ( window.isNull ) throw new Error( "No active image" );
 
    let z = img.zoomFactor;
    width = img.width / 5;
