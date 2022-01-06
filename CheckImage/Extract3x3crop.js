@@ -3,13 +3,13 @@
 
    (c) 2022 by Christian Liska
 */
-#feature-id Devgroup > CheckImage
+#feature-id Devgroup > Extract3x3CropViews
 
-#define TITLE "Check Image by CL"
-#define VERSION "1.0.1"
-#define ID "CHKIMG"
+#define TITLE "Check Image and extract 3x3 crop viewsby CL"
+#define VERSION "1.0.0"
+#define ID "3x3CRP"
 
-//#define EXTRACT_VIEWS
+#define EXTRACT_VIEWS
 #define DELETE_VIEWS
 
 #include <pjsr/ColorSpace.jsh>
