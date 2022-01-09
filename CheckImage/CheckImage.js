@@ -14,6 +14,7 @@
 
 #include <pjsr/ColorSpace.jsh>
 #include <pjsr/SampleType.jsh>
+#include <pjsr/StarDetector.jsh>
 
 #include "PI_Lib.jsh"
 

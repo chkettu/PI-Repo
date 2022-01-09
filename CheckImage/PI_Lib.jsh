@@ -1,3 +1,55 @@
+function generateMatrix() {
+   var width;
+   var height;
+
+   var window = ImageWindow.activeWindow;
+   if ( window.isNull ) throw new Error( "No active image" );
+
+   var view = window.currentView;
+   var img = view.image;
+
+   var viewArray = new Array(25);
+
+   width = img.width/5;
+   height = img.height/5;
+
+   /*
+      v[i,j]
+      v(0,0), v(0,1), ... , v(0,4)
+      v(1,0), v(1,1), ... , v(1,4)
+      ...
+      v(4,0), v(4,1), ... , v(4,4)
+    */
+   for(var i = 0; i < 5; i++) {
+      for (var j = 0; j < 5; j++) {
+         let v = window.createPreview(width * j, height * i, width + width *j, height + height * i, "v" + i + j);
+         viewArray[i*5+j] = v;
+      }
+   }
+
+   for (var j = 0; j < viewArray.length; ++j) {
+      var vj = viewArray[j];
+      statistics(vj);
+#ifdef EXTRACT_VIEWS
+      var imgj = vj.image;
+      var iwj = new ImageWindow(imgj.width, imgj.height,
+         imgj.numberOfChannels,
+         imgj.bitsPerSample,
+         imgj.sampleType != SampleType_Integer,
+         imgj.colorSpace != ColorSpace_Gray,
+         "C_"+(j+1));
+      var iwjv = iwj.mainView;
+      iwjv.beginProcess();
+      iwjv.image.apply(imgj);
+      iwjv.endProcess();
+      iwj.show();
+#endif
+#ifdef DELETE_VIEWS
+      window.deletePreview(vj);
+#endif
+   }
+}
+
 function generateCrop() {
    var width;
    var height;
@@ -74,6 +126,7 @@ function generateCrop() {
 
    for (var j = 0; j < viewArray.length; ++j) {
       var vj = viewArray[j];
+      statistics(vj);
 #ifdef EXTRACT_VIEWS
       var imgj = vj.image;
       var iwj = new ImageWindow(imgj.width, imgj.height,
@@ -94,3 +147,12 @@ function generateCrop() {
    }
 
 }
+
+function statistics(view) {
+    let iv = view.image;
+    let mean = iv["mean"]().toString().slice(0,6);
+    let stdDev = iv["stdDev"]().toString().slice(0,6);
+    let avgDev = iv["avgDev"]().toString().slice(0,6);
+    console.writeln("" + view.id + ": mean=" + mean + " stdDev=" + stdDev + " avgDev=" + avgDev);
+}
+
